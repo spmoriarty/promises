@@ -25,6 +25,15 @@ describe('simple database', () => {
     expect(result).toEqual(cat);
   });
 
+  it('Should save file', async () => {
+    const car = {
+      name: 'Koniegsegg',
+    };
+    const data = new SimpleDb(TEST_DIR);
+    await data.save(car);
+    const result = await data.getById(car.id);
+    expect(result).toEqual(car);
+  });
 
 
 });
