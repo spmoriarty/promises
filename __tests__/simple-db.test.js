@@ -35,5 +35,36 @@ describe('simple database', () => {
     expect(result).toEqual(car);
   });
 
+  it('Should get all', async () => {
+    const bugs = [{
+      name: 'Mantis',
+    }, {
+      name: 'Ant',
+    }, {
+      name: 'Cricket'
+    }];
+    const data = new SimpleDb(TEST_DIR);
+    bugs.forEach((bugs) => {
+      return data.save(bugs);
+    });
+    return data.getAll().then((result) => {
+      
+      expect(result).toEqual([
+        {
+          id: expect.any(String),
+          name: expect.any(String),
+        },
+        {
+          id: expect.any(String),
+          name: expect.any(String),
+        },
+        {
+          id: expect.any(String),
+          name: expect.any(String),
+        },
+      ]);
+    });
+ 
+  });
 
 });
